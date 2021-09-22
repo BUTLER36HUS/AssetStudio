@@ -8,4 +8,8 @@
     <Copyright>Copyright © Perfare 2018-2021</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
 </Project>
