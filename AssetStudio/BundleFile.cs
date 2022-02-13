@@ -252,6 +252,7 @@ namespace AssetStudio
             }
             using (var blocksInfoReader = new EndianBinaryReader(blocksInfoUncompresseddStream))
             {
+                long blockCompressedSize = 0;
                 var uncompressedDataHash = blocksInfoReader.ReadBytes(16);
                 var blocksInfoCount = blocksInfoReader.ReadInt32();
                 m_BlocksInfo = new StorageBlock[blocksInfoCount];
@@ -263,6 +264,7 @@ namespace AssetStudio
                         compressedSize = blocksInfoReader.ReadUInt32(),
                         flags = blocksInfoReader.ReadUInt16()
                     };
+                    blockCompressedSize += m_BlocksInfo[i].compressedSize;
                 }
 
                 var nodesCount = blocksInfoReader.ReadInt32();
@@ -277,6 +279,7 @@ namespace AssetStudio
                         path = blocksInfoReader.ReadStringToNull(),
                     };
                 }
+                
             }
         }
 
